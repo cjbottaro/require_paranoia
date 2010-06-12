@@ -1,16 +1,24 @@
-= thread_paranoia
+= require_paranoia
 
-Description goes here.
+Temporarily disable +require+ to ensure thread safety.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+== Examples
+  
+  require "something"
+  Kernel.disable_require!
+  require "something" # Ok, it's already loaded.
+  require "something_else" # Raises RequireParanoia exception.
+  Kernel.enable_require!
+  require "something_else" # Ok, require has been renabled.
+  
+You can call <tt>disable_require!</tt> with a block.
+  
+  require "something"
+  Kernel.disable_require! do
+    require "something" # Ok, it's already loaded.
+    require "something_else" # Raises RequireParanoia exception.
+  end
+  require "something_else" # Ok, require has been renabled.
 
 == Copyright
 

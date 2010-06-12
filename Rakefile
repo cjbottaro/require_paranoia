@@ -4,13 +4,13 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "thread_paranoia"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.name = "require_paranoia"
+    gem.summary = %Q{Temporarily disable require to ensure thread safety.}
+    gem.description = %Q{Temporarily disable Kernel.require to ensure thread safety.}
     gem.email = "cjbottaro@alumni.cs.utexas.edu"
-    gem.homepage = "http://github.com/cjbottaro/thread_paranoia"
+    gem.homepage = "http://github.com/cjbottaro/require_paranoia"
     gem.authors = ["Christopher J. Bottaro"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    #gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -47,7 +47,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "thread_paranoia #{version}"
+  rdoc.title = "require_paranoia #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
